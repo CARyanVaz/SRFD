@@ -89,6 +89,7 @@ header{
   height:66px;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;
 }
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-img{height:44px;width:auto;max-width:220px;object-fit:contain;display:block}
 .logo-triband{
   display:flex;flex-direction:column;
   width:5px;height:26px;border-radius:2px;overflow:hidden;
@@ -778,9 +779,8 @@ section {
 <!-- HEADER -->
 <header>
   <div class="nav-inner">
-    <a href="#hero" class="logo">
-      <div class="logo-triband"><span></span><span></span><span></span></div>
-      <div class="logo-text">SR<span>FD</span></div>
+    <a href="#hero" class="logo" aria-label="SRFD Home">
+      <img src="SRFD%20Logo.jpeg" alt="SRFD logo" class="logo-img">
     </a>
     <nav>
       <a href="#hero" data-i18n="navHome">Home</a>
@@ -1338,10 +1338,9 @@ section {
 <!-- FOOTER -->
 <footer>
   <div class="foot-inner">
-    <div class="logo" style="gap:8px">
-      <div class="logo-triband"><span></span><span></span><span></span></div>
-      <div class="logo-text" style="color:rgba(255,240,200,.8);font-size:1.15rem">SR<span style="color:var(--guru-lt)">FD</span></div>
-    </div>
+    <a href="#hero" class="logo" aria-label="SRFD Home">
+      <img src="SRFD%20Logo.jpeg" alt="SRFD logo" class="logo-img">
+    </a>
     <div class="foot-nav">
       <a href="#hero">Home</a>
       <a href="#services">Services</a>
