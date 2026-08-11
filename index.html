@@ -1532,14 +1532,14 @@ function changeLanguage(lang) {
 /* ── GALLERY DATA ─────────────────────────────────── */
 const PROJECTS = [
   {id:1,cat:"research",catLabel:"Social Research",title:"Household Survey — Beed District",loc:"Beed, Maharashtra · 2024",desc:"Socio-economic baseline survey covering 1,200 households across 18 villages to assess food security and MGNREGA coverage.",img:null,video:false},
-  {id:2,cat:"training",catLabel:"Skill Training",title:"Women's Vocational Training Camp",loc:"Jharkhand · 2024",desc:"15-day intensive skill training for 80 women from SHG federations covering tailoring, handicraft, and digital literacy.",img:"Pics/Women Empowerment program in Jharkhand.jpeg",video:false},
-  {id:3,cat:"livelihood",catLabel:"Livelihoods",title:"Employment Enhancement Training",loc:"Aurangabad, Maharashtra · 2023",desc:"Direct market linkage facilitation for 340 vegetable farmers, connecting them to APMC and institutional buyers.",img:"Pics/Employment enhancement training.jpeg",video:false},
+  {id:2,cat:"training",catLabel:"Skill Training",title:"Women's Vocational Training Camp",loc:"Jharkhand · 2024",desc:"15-day intensive skill training for 80 women from SHG federations covering tailoring, handicraft, and digital literacy.",img:"Women Empowerment program in Jharkhand.jpeg",video:false},
+  {id:3,cat:"livelihood",catLabel:"Livelihoods",title:"Employment Enhancement Training",loc:"Aurangabad, Maharashtra · 2023",desc:"Direct market linkage facilitation for 340 vegetable farmers, connecting them to APMC and institutional buyers.",img:"Employment enhancement training.jpeg",video:false},
   {id:4,cat:"research",catLabel:"Social Research",title:"Drinking Water Access Study",loc:"Nanded, Maharashtra · 2024",desc:"Village-level assessment of piped water supply under Jal Jeevan Mission across 52 gram panchayats.",img:null,video:true},
   {id:5,cat:"digital",catLabel:"Digital Solutions",title:"GIS Mapping — Scheme Saturation",loc:"Latur, Maharashtra · 2023",desc:"Spatial mapping of beneficiary coverage under PM-Kisan and PMFBY across 6 talukas, integrated with dashboard.",img:null,video:false},
-  {id:6,cat:"training",catLabel:"Capacity Building",title:"Field Investigator Training",loc:"Chhatrapati Sambhajinagar · 2024",desc:"Three-day residential training for 60 field investigators on CAPI-based data collection, ODK, and interview protocol.",img:"Pics/CBT1.jpeg",video:false},
-  {id:7,cat:"livelihood",catLabel:"Livelihoods",title:"SHG Group Empowerment training",loc:"Hingoli, Maharashtra · 2023",desc:"One-day credit linkage event connecting 28 SHGs with district cooperative banks, facilitating ₹42 lakh in loans.",img:"Pics/SHG group empowerment training.jpeg",video:false},
-  {id:8,cat:"research",catLabel:"Community Research",title:"Student Empowerment Program",loc:"Parbhani, Maharashtra · 2024",desc:"Six FGD sessions with mothers, ASHA workers, and AWW staff to understand gaps in ICDS implementation.",img:"Pics/Student Empowerment program.jpeg",video:false},
-  {id:9,cat:"digital",catLabel:"Digital Solutions",title:"Government Health Staff Training on e-sangivanee App",loc:"Aurangabad, Maharashtra · 2024",desc:"Web portal built for district-level PMEGP tracking with real-time disbursement dashboards and beneficiary self-update module.",img:"Pics/Government Health staff training on e-sangivanee app.jpeg",video:false},
+  {id:6,cat:"training",catLabel:"Capacity Building",title:"Field Investigator Training",loc:"Chhatrapati Sambhajinagar · 2024",desc:"Three-day residential training for 60 field investigators on CAPI-based data collection, ODK, and interview protocol.",img:"CBT1.jpeg",video:false},
+  {id:7,cat:"livelihood",catLabel:"Livelihoods",title:"SHG Group Empowerment training",loc:"Hingoli, Maharashtra · 2023",desc:"One-day credit linkage event connecting 28 SHGs with district cooperative banks, facilitating ₹42 lakh in loans.",img:"SHG group empowerment training.jpeg",video:false},
+  {id:8,cat:"research",catLabel:"Community Research",title:"Student Empowerment Program",loc:"Parbhani, Maharashtra · 2024",desc:"Six FGD sessions with mothers, ASHA workers, and AWW staff to understand gaps in ICDS implementation.",img:"Student Empowerment program.jpeg",video:false},
+  {id:9,cat:"digital",catLabel:"Digital Solutions",title:"Government Health Staff Training on e-sangivanee App",loc:"Aurangabad, Maharashtra · 2024",desc:"Web portal built for district-level PMEGP tracking with real-time disbursement dashboards and beneficiary self-update module.",img:"Government Health staff training on e-sangivanee app.jpeg",video:false},
 ];
 
 const PLACEHOLDERS = [
@@ -1558,7 +1558,7 @@ function renderGallery(filter){
         <div class="gal-ph-icon">${PLACEHOLDERS[p.id-1]||"📸"}</div>
         <div class="gal-ph-txt">${p.catLabel}</div>
       </div>
-      ${p.img ? `<img class="gal-thumb" src="${p.img}" alt="${p.title}">` : ''}
+      ${p.img ? `<img class="gal-thumb" src="${encodeURI(p.img)}" loading="lazy" alt="${p.title}">` : ''}
       ${p.video?`<div class="gal-video-badge">▶ Video</div>`:""}
       <div class="gal-info">
         <div class="gal-cat">${p.catLabel}</div>
@@ -1580,7 +1580,7 @@ function openLightbox(id){
   const img = document.getElementById("lbImg");
   lb.classList.add("open");
   if(p.img){
-    img.src = p.img;
+    img.src = encodeURI(p.img);
     img.alt = p.title;
     img.style.display = "block";
     const existing = document.getElementById("lbPlaceholder");
